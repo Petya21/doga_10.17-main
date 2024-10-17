@@ -50,7 +50,7 @@ export class AppController {
     @Render('siker')
     orderSuccess() {
         return {
-            message: 'Sikeresen leadta a rendelését!',
+            message: 'Foglalás mentve, köszönjük, hogy minket választott.',
             ordersCount: this.orders.length,
         };
     }
