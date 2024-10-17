@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Foglalás</title>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Foglalás</h1>
+
+        <% if (errors.length) { %>
+        <div class="alert alert-danger">
+            <ul>
+                <% errors.forEach(function(error) { %>
+                <li><%= error %></li>
+                <% }) %>
+            </ul>
+        </div>
+        <% } %>
+
+        <form method="POST" action="/order">
+            <div class="form-group">
+                <label for="name">Név:</label>
+                <input type="text" class="form-control" id="name" name="name" value="<%= data.name %>" required>
+            </div>
+            <div class="form-group">
+                <label for="email">E-mail cím:</label>
+                <input type="email" class="form-control" id="email" name="email" value="<%= data.email %>" required>
+            </div>
+            <div class="form-group">
+                <label for="dateTime">Érkezési dátum és időpont:</label>
+                <input type="datetime-local" class="form-control" id="dateTime" name="dateTime" value="<%= data.dateTime %>" required min="<%= currentDate %>">
+            </div>
+            <div class="form-group">
+                <label for="guests">Vendégek száma:</label>
+                <input type="number" class="form-control" id="guests" name="guests" value="<%= data.guests %>" min="1" max="10" required placeholder="Minimum 1, maximum 10 fő.">
+            </div>
+            <button type="submit" class="btn btn-primary">Foglalás:</button>
+        </form>
+    </div>
+</body>
+</html>
